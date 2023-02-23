@@ -4,7 +4,7 @@ import 'package:formz/formz.dart';
 import 'package:shuntingyard/bloc/my_bloc_event.dart';
 import 'package:shuntingyard/bloc/my_bloc_state.dart';
 import 'package:shuntingyard/bloc/my_block_form.dart';
-import 'package:shuntingyard/model/Search.dart';
+import 'package:shuntingyard/model/inputcalculation.dart';
 import 'package:shuntingyard/widgets/inputWidget.dart';
 import 'package:shuntingyard/widgets/outputWidget.dart';
 import 'package:shuntingyard/widgets/submitbutton.dart';
@@ -26,20 +26,20 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         body: BlocProvider(create: (_) => MyBlocForm(),
-        child: const MyForm(),),
+        child: const MyFormInput(),),
       ),
     );
   }
 }
 
-class MyForm extends StatefulWidget {
-  const MyForm({Key? key}) : super(key: key);
+class MyFormInput extends StatefulWidget {
+  const MyFormInput({Key? key}) : super(key: key);
 
   @override
-  State<MyForm> createState() => _MyFormState();
+  State<MyFormInput> createState() => _MyFormInputState();
 }
 
-class _MyFormState extends State<MyForm> {
+class _MyFormInputState extends State<MyFormInput> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<MyBlocForm, MyFormState>(listener: (context, state){

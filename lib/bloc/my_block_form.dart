@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:shuntingyard/bloc/my_bloc_event.dart';
 import 'package:shuntingyard/bloc/my_bloc_state.dart';
-import 'package:shuntingyard/model/Search.dart';
+import 'package:shuntingyard/model/inputcalculation.dart';
 
 class MyBlocForm extends Bloc<MyFormEvent, MyFormState> {
   MyBlocForm() : super(const MyFormState()) {
@@ -36,8 +36,13 @@ class MyBlocForm extends Bloc<MyFormEvent, MyFormState> {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
       await Future<void>.delayed(const Duration(seconds: 1));
       emit(state.copyWith(status: FormzStatus.submissionSuccess));
-      double? result = evaluateExpression(inputText.value);
-      emit(state.copyWith(result: result.toString()));
+      var result = calculate(inputText.value);
+      if(result == null){
+        emit(state.copyWith(result: "Enter a valid input"));
+      }else{
+        emit(state.copyWith(result: result.toString()));
+      }
+
     }
   }
 }

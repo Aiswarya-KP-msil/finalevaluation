@@ -11,7 +11,12 @@ class OutputWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MyBlocForm, MyFormState>(
       builder: (context, state) {
-        return Text(state.result.toString());
+        return Text(state.result.toString(),style: TextStyle(
+          fontSize: 30,
+          color: Colors.green,
+          fontWeight: FontWeight.bold
+        ),
+        );
       },
     );
   }

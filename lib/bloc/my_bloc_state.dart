@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:shuntingyard/model/Search.dart';
+import 'package:shuntingyard/model/inputcalculation.dart';
 
 class MyFormState extends Equatable {
+  final Input input;
+  final FormzStatus status;
+  final String result;
   const MyFormState({
     this.input = const Input.pure(),
     this.status = FormzStatus.pure,
     this.result = ""
   });
 
-  final Input input;
-  final FormzStatus status;
-  final String result;
 
   MyFormState copyWith({
     Input? input,
